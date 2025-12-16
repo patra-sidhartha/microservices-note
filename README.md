@@ -373,8 +373,21 @@ To Deploy microservices effectively in a production environment requires careful
  We concept like Authentication and Authorization, data encryptions, regular security audits and so on.
 
 
+# API Versioning and REST APIs
 
-===========================================
+API versioning is a standard practice used to manage changes in an API over time without breaking existing client applications. Many different types of APIs, including those designed with the **REST** (Representational State Transfer) architectural style, employ versioning strategies to balance stability and innovation.
+
+### Common REST API Versioning Strategies
+
+When developing a REST API, developers can choose from several methods to implement versioning.
+
+*   **URI Path Versioning**: This involves including the version number directly in the endpoint's URL (e.g., `https://api.example.com/v1/products`). It is straightforward and easy to understand but can lead to URL clutter as the API evolves.
+*   **Query Parameter Versioning**: The version is passed as a query parameter (e.g., `https://api.example.com/products?version=1`). This keeps the base URL cleaner but might be less intuitive for consumers.
+*   **Custom Header Versioning**: A custom HTTP header, such as `X-API-Version`, is used to specify the desired API version. This keeps the URI clean and aligns well with some REST principles, but requires clients to manage extra headers.
+*   **Content Negotiation (Media Type Versioning)**: This advanced method uses the HTTP `Accept` header to indicate the desired representation of the resource, often involving a custom vendor-specific media type that includes the version (e.g., `Accept: application/vnd.example.v1+json`). This is considered by some to be the most "RESTful" approach as it versions the resource's representation rather than its address.
+
+By using versioning, API providers can introduce new features, fix bugs, or change data structures (known as "breaking changes") while allowing existing clients to continue using the older, stable version until they are ready to upgrade.
+
 
 
 
